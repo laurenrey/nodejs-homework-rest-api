@@ -36,8 +36,12 @@ const updateContactById = async (req, res, next) => {
   const { contactId } = req.params;
   const contact = await db.updateContact(contactId, req.body);
 
-  if (!contact) {
+  if (!req.body) {
     res.status(400).json({ message: "missing fields" });
+  }
+
+  if (!contact) {
+    res.status(404).json({ message: "Not found" });
   }
   res.status(200).json(contact);
 };
