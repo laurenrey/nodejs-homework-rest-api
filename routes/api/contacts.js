@@ -7,9 +7,10 @@ const {
   createContact,
   deleteContact,
   updateContactById,
+  updateStatusContact,
 } = require("../../controllers/controllers");
 const { validateBody } = require("../../validation/validation");
-const contactSchema = require("../../validation/schema");
+const { contactSchema, statusSchema } = require("../../validation/schema");
 
 const router = express.Router();
 
@@ -21,6 +22,11 @@ router.put(
   "/:contactId",
   validateBody(contactSchema),
   tryCatchWrapper(updateContactById)
+);
+router.patch(
+  "/:contactId/favorite",
+  validateBody(statusSchema),
+  tryCatchWrapper(updateStatusContact)
 );
 
 module.exports = router;
