@@ -10,4 +10,10 @@ const contactSchema = Joi.object({
 const statusSchema = Joi.object({
   favorite: Joi.boolean().required(),
 });
-module.exports = { contactSchema, statusSchema };
+
+const authSchema = Joi.object({
+  email: Joi.string().email({}).required(),
+  password: Joi.string().min(6).max(30).required(),
+});
+
+module.exports = { contactSchema, statusSchema, authSchema };
