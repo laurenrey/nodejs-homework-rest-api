@@ -18,7 +18,7 @@ const schema = mongoose.Schema(
     },
     avatarURL: {
       type: String,
-      default: "none",
+      default: "",
     },
 
     token: String,
