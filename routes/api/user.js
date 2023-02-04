@@ -5,6 +5,8 @@ const {
   createContact,
   current,
   uploadAvatar,
+  verifyEmail,
+  resendVerifyEmail,
 } = require("../../controllers/user/index");
 const { auth } = require("../../middlewares/index");
 const { upload } = require("../../middlewares/index");
@@ -27,5 +29,7 @@ userRouter.patch(
   upload.single("avatar"),
   tryCatchWrapper(uploadAvatar)
 );
+userRouter.get("/verify/:verificationToken", tryCatchWrapper(verifyEmail));
+userRouter.post("/verify", tryCatchWrapper(resendVerifyEmail));
 
 module.exports = { userRouter };
