@@ -1,3 +1,5 @@
+require("dotenv").config();
+
 function tryCatchWrapper(endpointFn) {
   return async (req, res, next) => {
     try {

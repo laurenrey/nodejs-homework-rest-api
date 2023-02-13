@@ -15,6 +15,13 @@ const login = async (req, res, next) => {
     throw new HttpError(401, "Email is wrong ");
   }
 
+  if (!storedUser.verify) {
+    throw new HttpError(
+      401,
+      "Email is not verified! Please chech your mail box "
+    );
+  }
+
   const isPasswordValid = await bcrypt.compare(password, storedUser.password);
 
   if (!isPasswordValid) {
