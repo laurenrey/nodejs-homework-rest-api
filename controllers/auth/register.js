@@ -2,8 +2,8 @@ const { User } = require("../../models/user");
 const { Conflict } = require("http-errors");
 const bcrypt = require("bcrypt");
 const gravatar = require("gravatar");
-const { sendMail } = require("../../helpers/helpers");
 const { v4 } = require("uuid");
+const sendMail = require("../../services/sendMail");
 
 const register = async (req, res, next) => {
   const { email, password } = req.body;

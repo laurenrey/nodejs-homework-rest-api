@@ -1,5 +1,5 @@
-const { sendMail } = require("../../helpers/helpers");
 const { User } = require("../../models/user");
+const sendMail = require("../../services/sendMail");
 
 const resendVerifyEmail = async (req, res, next) => {
   const { email } = req.body;
